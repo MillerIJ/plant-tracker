@@ -1,0 +1,8 @@
+#nav {
+  display: none;
+}
+
+#nav.open {
+  height: 400px;
+  display: inline-block;
+}

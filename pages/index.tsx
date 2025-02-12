@@ -1,3 +1,4 @@
+import NavBar from "../components/navbar";
 import { createClient } from "../utils/supabase/component";
 import { useState } from "react";
 
@@ -36,6 +37,7 @@ export default function Page({ plants }) {
 
   return (
     <div>
+      <NavBar />
       <h1>Home Page</h1>
 
       <p>plants:</p>
