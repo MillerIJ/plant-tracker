@@ -1,22 +1,9 @@
-import { createClient } from "../utils/supabase/component";
 import { useState } from "react";
+import { useData } from "../context/DataContext";
 
-export async function getServerSideProps() {
-  const supabase = createClient();
-
-  // Fetch data from external API
-  const { data: plants, error } = await supabase.from("plants").select("*");
-  if (error) {
-    console.log(error);
-  }
-
-  // Pass data to the page via props
-  return { props: { plants } };
-}
-
-export default function Page({ plants }) {
-  // Create new plant
-  const [newPlantName, setNewPlantName] = useState(" ");
+export default function Page() {
+  const { plants, loading } = useData();
+  const [newPlantName, setNewPlantName] = useState("");
 
   const createPlant = async () => {
     const response = await fetch("/api/plants", {
@@ -34,22 +21,17 @@ export default function Page({ plants }) {
     }
   };
 
+  if (loading) return <div>Loading plants...</div>;
+
   return (
     <div>
       <h1>Home Page</h1>
-
       <p>plants:</p>
-
-      {!plants ? (
-        <div>Loading plants...</div>
-      ) : (
-        <div>
-          {plants.map((plant) => {
-            return <div key={plant.id}>{plant.name}</div>;
-          })}
-        </div>
-      )}
-
+      <div>
+        {plants.map((plant) => (
+          <div key={plant.id}>{plant.name}</div>
+        ))}
+      </div>
       <input
         type='text'
         value={newPlantName}

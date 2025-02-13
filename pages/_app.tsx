@@ -1,11 +1,14 @@
-import type { AppProps } from "next/app";
-import Navbar from "../components/navbar";
+import { AppProps } from "next/app";
+import { DataProvider } from "../context/DataContext";
+import NavBar from "../components/navbar";
 
-export default function App({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Navbar />
+    <DataProvider>
+      <NavBar />
       <Component {...pageProps} />
-    </>
+    </DataProvider>
   );
 }
+
+export default MyApp;
