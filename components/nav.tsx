@@ -1,10 +1,22 @@
 import React from "react";
+import Link from "next/link";
 import style from "../styles/Nav.module.css";
 
-export default function Nav({ isOpen }) {
+interface NavProps {
+  isOpen: boolean;
+}
+
+const Nav: React.FC<NavProps> = ({ isOpen }) => {
   return (
     <div id={style["nav"]} className={isOpen ? style.open : null}>
-      {isOpen ? <p>OPEN</p> : <p>CLOSED</p>}
+      {isOpen ? (
+        <div>
+          <Link href='/'>Home</Link>
+          <Link href='/plants'>Plants</Link>
+        </div>
+      ) : null}
     </div>
   );
-}
+};
+
+export default Nav;
