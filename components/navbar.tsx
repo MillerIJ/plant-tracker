@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TopBar from "./topbar";
 import Nav from "./nav";
 
-export default function NavBar() {
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
