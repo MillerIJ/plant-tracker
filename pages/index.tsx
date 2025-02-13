@@ -25,7 +25,7 @@ export default function Page() {
 
   return (
     <div>
-      <h1>Home Page</h1>
+      <h1>Home</h1>
       <p>plants:</p>
       <div>
         {plants.map((plant) => (

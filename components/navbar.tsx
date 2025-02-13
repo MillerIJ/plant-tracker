@@ -17,6 +17,7 @@ import Nav from "./nav";
 //   );
 // }
 
+// no drop down nav approach
 export default function Navbar() {
   return (
     <div className={styles.navbar}>

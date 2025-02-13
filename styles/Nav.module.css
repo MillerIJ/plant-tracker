@@ -1,8 +1,16 @@
 .navbar {
-  height: 200px;
-  position: sticky;
+  height: 50px;
+  width: 100vw;
+  position: fixed;
   bottom: 0;
   left: 0;
+  background-color: darkslategray;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.navbar a {
+  text-align: center;
 }
 
 #nav {
