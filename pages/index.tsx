@@ -21,24 +21,39 @@ export default function Page() {
     }
   };
 
-  if (loading) return <div>Loading plants...</div>;
+  // check for plant name
+  function checkForm(event) {
+    event.preventDefault();
+    if (!newPlantName) {
+      console.log("empty plant name");
+    } else {
+      console.log("creating plant");
+      createPlant();
+    }
+  }
+  // if (loading) return <div>Loading plants...</div>;
 
   return (
     <div>
       <h1>Home</h1>
-      <p>plants:</p>
+      <p>Plants:</p>
       <div>
         {plants.map((plant) => (
           <div key={plant.id}>{plant.name}</div>
         ))}
       </div>
-      <input
-        type='text'
-        value={newPlantName}
-        onChange={(e) => setNewPlantName(e.target.value)}
-        placeholder='New plant name'
-      />
-      <button onClick={createPlant}>Create new plant</button>
+      <div>
+        <h2>Create New Plant</h2>
+        <form action='' onSubmit={(e) => checkForm(e)}>
+          <input
+            type='text'
+            value={newPlantName}
+            onChange={(e) => setNewPlantName(e.target.value)}
+            placeholder='New plant name'
+          />
+          <button type='submit'>Create new plant</button>
+        </form>
+      </div>
     </div>
   );
 }
