@@ -35,23 +35,27 @@ export default function Plants() {
     }
   }, [plants]);
 
-  return (
-    <div>
-      <h1>My Plants</h1>
-
+  if (loading) {
+    return <div>Loading...</div>;
+  } else {
+    return (
       <div>
-        {tabs.map((tab, index) => (
-          <button key={index} onClick={() => setActiveTab(index)}>
-            {tab}
-          </button>
-        ))}
+        <h1>My Plants</h1>
+
+        <div>
+          {tabs.map((tab, index) => (
+            <button key={index} onClick={() => setActiveTab(index)}>
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        {activeTab === 0 &&
+          plants.map((plant) => <div key={plant.id}>{plant.name}</div>)}
+
+        {activeTab === 1 &&
+          sites.map((site, index) => <div key={index}>{site.name}</div>)}
       </div>
-
-      {activeTab === 0 &&
-        plants.map((plant) => <div key={plant.id}>{plant.name}</div>)}
-
-      {activeTab === 1 &&
-        sites.map((site, index) => <div key={index}>{site.name}</div>)}
-    </div>
-  );
+    );
+  }
 }

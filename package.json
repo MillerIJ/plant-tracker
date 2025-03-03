@@ -13,6 +13,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.47.16",
     "next": "^15.1.5",
