@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useData } from "../../context/DataContext";
+import styles from "../../styles/Plants.module.css";
 
 const tabs = ["plants", "sites"];
 
@@ -41,7 +42,6 @@ export default function Plants() {
     return (
       <div>
         <h1>My Plants</h1>
-
         <div>
           {tabs.map((tab, index) => (
             <button key={index} onClick={() => setActiveTab(index)}>
@@ -49,12 +49,33 @@ export default function Plants() {
             </button>
           ))}
         </div>
+        {activeTab === 0 && (
+          // Plants Tab
+          <div>
+            <p>{plants.length}</p>
 
-        {activeTab === 0 &&
-          plants.map((plant) => <div key={plant.id}>{plant.name}</div>)}
+            {plants.map((plant) => (
+              // loop through Plants array
+              <div key={plant.id}>{plant.name}</div>
+            ))}
+          </div>
+        )}
 
         {activeTab === 1 &&
-          sites.map((site, index) => <div key={index}>{site.name}</div>)}
+          // Sites Tab
+          // loop through Sites array
+          sites.map((site, index) => (
+            <div key={index}>
+              <h2 className={styles.site}>
+                {site.name} - {site.plants.length}
+              </h2>
+
+              {site.plants.map((plant, index) => (
+                // loop through the Plants within the site
+                <div key={index}>{plant}</div>
+              ))}
+            </div>
+          ))}
       </div>
     );
   }
