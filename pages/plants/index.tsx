@@ -41,41 +41,50 @@ export default function Plants() {
   } else {
     return (
       <div>
-        <h1>My Plants</h1>
-        <div>
+        <h1 className={styles.title}>My Garden</h1>
+
+        <div className={styles.tabContainer}>
           {tabs.map((tab, index) => (
-            <button key={index} onClick={() => setActiveTab(index)}>
-              {tab}
+            // map the tabs
+            <button
+              key={index}
+              onClick={() => setActiveTab(index)}
+              className={`${styles.tab} ${
+                activeTab === index && styles.active
+              }`}>
+              {tab.toUpperCase()}
             </button>
           ))}
         </div>
-        {activeTab === 0 && (
-          // Plants Tab
-          <div>
-            <p>{plants.length}</p>
+        <div className={styles.contentContainer}>
+          {activeTab === 0 && (
+            // Plants Tab
+            <div>
+              <p>{plants.length}</p>
 
-            {plants.map((plant) => (
-              // loop through Plants array
-              <div key={plant.id}>{plant.name}</div>
-            ))}
-          </div>
-        )}
-
-        {activeTab === 1 &&
-          // Sites Tab
-          // loop through Sites array
-          sites.map((site, index) => (
-            <div key={index}>
-              <h2 className={styles.site}>
-                {site.name} - {site.plants.length}
-              </h2>
-
-              {site.plants.map((plant, index) => (
-                // loop through the Plants within the site
-                <div key={index}>{plant}</div>
+              {plants.map((plant) => (
+                // loop through Plants array
+                <div key={plant.id}>{plant.name}</div>
               ))}
             </div>
-          ))}
+          )}
+
+          {activeTab === 1 &&
+            // Sites Tab
+            // loop through Sites array
+            sites.map((site, index) => (
+              <div key={index}>
+                <h2 className={styles.site}>
+                  {site.name} - {site.plants.length}
+                </h2>
+
+                {site.plants.map((plant, index) => (
+                  // loop through the Plants within the site
+                  <div key={index}>{plant}</div>
+                ))}
+              </div>
+            ))}
+        </div>
       </div>
     );
   }

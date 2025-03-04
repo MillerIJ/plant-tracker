@@ -17,10 +17,10 @@
 .navLink {
   color: #a3b18a;
   height: auto;
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
-.active {
+.navLink.active {
   color: white;
   background-color: #588157;
-  border-radius: 25%;
+  border-radius: 40%;
 }

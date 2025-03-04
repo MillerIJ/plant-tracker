@@ -31,21 +31,21 @@ export default function Navbar() {
         className={`${styles.navLink} ${
           router.pathname === "/" && styles.active
         }`}>
-        <Icon path={mdiHome} size={1} className={styles.icon} />
+        <Icon path={mdiHome} size={1.25} className={styles.icon} />
       </Link>
       <Link
         href='/plants'
         className={`${styles.navLink} ${
           router.pathname === "/plants" && styles.active
         }`}>
-        <Icon path={mdiSprout} size={1} />
+        <Icon path={mdiSprout} size={1.25} />
       </Link>
       <Link
         href='/'
         className={`${styles.navLink} ${
           router.pathname === "/account" && styles.active
         }`}>
-        <Icon path={mdiAccountCircle} size={1} />
+        <Icon path={mdiAccountCircle} size={1.25} />
       </Link>
     </div>
   );
