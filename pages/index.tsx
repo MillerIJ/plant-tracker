@@ -35,14 +35,12 @@ export default function Page() {
 
   return (
     <div>
-      <h1>Home</h1>
-      <p>Plants:</p>
       <div>
         {plants.map((plant) => (
           <div key={plant.id}>{plant.name}</div>
         ))}
       </div>
-      <div>
+      {/* <div>
         <h2>Create New Plant</h2>
         <form action='' onSubmit={(e) => checkForm(e)}>
           <input
@@ -53,7 +51,7 @@ export default function Page() {
           />
           <button type='submit'>Create new plant</button>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 }
