@@ -13,12 +13,16 @@
 .tab {
   padding: 0.5rem 0.5rem 0;
   border-radius: 50% 50% 0 0;
+  background-color: grey;
   color: #588157;
-  border: #588157 solid 1px;
+  border: grey solid 1px;
+  border-bottom: none;
 }
 .tab.active {
+  background-color: white;
   color: #344e41;
-  background-color: #dad7cd;
+  border: black solid 1px;
+  border-bottom: none;
 }
 .contentContainer {
   width: 100%;
