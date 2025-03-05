@@ -39,6 +39,7 @@ export default function Page() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [newPlantName, setNewPlantName] = useState("");
 
+  // get current date
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentDate(new Date());
@@ -47,16 +48,24 @@ export default function Page() {
     return () => clearInterval(intervalId);
   }, []);
 
+  // create watering schedule
   useEffect(() => {
     if (plants) {
-      console.log(sortPlants(plants));
+      sortPlants(plants);
     }
   }, plants);
 
   function sortPlants(plantArray) {
-    let sortedPlants = plantArray.sort();
-
-    return plantArray;
+    for (let i = 0; i < plantArray.length; i++) {
+      const plant = plantArray[i];
+      if (plant.last_watered) {
+        const lastWatered = new Date(plant.last_watered);
+        const nextWatering = new Date(
+          lastWatered.setDate(lastWatered.getDate() + plant.watering_interval)
+        );
+        console.log(plant.name, nextWatering);
+      }
+    }
   }
 
   const createPlant = async () => {
@@ -90,7 +99,7 @@ export default function Page() {
 
   return (
     <div>
-      <p>Current date and time: {currentDate.toLocaleString()}</p>
+      <p>Current date: {currentDate.toLocaleDateString()}</p>
       <div>
         {plants.map((plant) => (
           <div key={plant.id}>
