@@ -102,9 +102,7 @@ export default function Page() {
       <p>Current date: {currentDate.toLocaleDateString()}</p>
       <div>
         {plants.map((plant) => (
-          <div key={plant.id}>
-            {plant.name} - {plant.last_watered - plant.watering_interval}
-          </div>
+          <div key={plant.id}>{plant.name}</div>
         ))}
       </div>
       {/* <div>
